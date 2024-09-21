@@ -22,9 +22,6 @@ public class Move : MonoBehaviour
     public float maxJumpHoldDur = 1.5f;
     private bool isJumping;
 
-    public float maxHealth = 100;
-    float currentHealth;
-
     public Transform camTransform;
     public Transform atkTransform;
 
@@ -160,23 +157,5 @@ public class Move : MonoBehaviour
     bool isGrounded()
     {
         return controller.isGrounded;
-    }
-
-    public void ApplyDamage(float dmg)
-    {
-        if (currentHealth > 0)
-        {
-            currentHealth -= dmg;
-
-            if (currentHealth <= 0)
-            {
-                KillPlayer();
-            }
-        }
-    }
-
-    public void KillPlayer()
-    {
-        Destroy(gameObject);
     }
 }
