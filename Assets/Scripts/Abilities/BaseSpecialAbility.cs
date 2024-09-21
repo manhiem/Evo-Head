@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseSpecialAbility : MonoBehaviour
+public class BaseSpecialAbility : MonoBehaviour
 {
     public SpecialAbilityData data;
 
@@ -18,9 +18,23 @@ public abstract class BaseSpecialAbility : MonoBehaviour
 
     #endregion
 
+    float castTime;
+
     private void Start()
     {
-        Destroy(gameObject, Duration);
+        castTime = Time.time;
+    }
+
+    private void Update()
+    {
+        if(Time.time - castTime < Duration)
+        {
+            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +42,7 @@ public abstract class BaseSpecialAbility : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             // Deduct health
+            other.gameObject.GetComponent<Move>().ApplyDamage(Damage);
             Debug.Log($"Health Minus Minus");
         }
     }

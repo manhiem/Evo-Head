@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class Move : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVel;
+
     public float playerSpeed = 6f;
     public float sprintSpeed = 10f;
     public float crouchSpeed = 3f;
@@ -14,12 +16,25 @@ public class Move : MonoBehaviour
     public float jumpHeight = 2f;
     private bool isCrouching;
     public Transform camTransform;
+    public Transform atkTransform;
+
+    [Header("Health Params")]
+    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private float timeBeforeHPRegenStarts = 3;
+    [SerializeField] private float healthIncrementValue = 1;
+    [SerializeField] private float healthTimeIncrement = 0.1f;
+    private float currentHealth;
+
+    [Header("Ability Params")]
+    [SerializeField] private KeyCode AbilityTestKey;
+    [SerializeField] private BaseSpecialAbility SpecialAbility;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         // camTransform = Camera.main.transform;
         isCrouching = false;
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -30,6 +45,11 @@ public class Move : MonoBehaviour
         if (isGrounded() && Input.GetButtonDown("Jump"))
         {
             Jump();
+        }
+
+        if(Input.GetKeyDown(AbilityTestKey))
+        {
+            Instantiate(SpecialAbility, atkTransform.position, SpecialAbility.transform.rotation);
         }
     }
 
@@ -54,6 +74,21 @@ public class Move : MonoBehaviour
 
         Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void ApplyDamage(float dmg)
+    {
+        currentHealth -= dmg;
+
+        if (currentHealth <= 0)
+            KillPlayer();
+    }
+
+    private void KillPlayer()
+    {
+        currentHealth = 0;
+        Destroy(gameObject);
+        Debug.Log($"Player Dead!");
     }
 
     float GetMoveSpeed()
@@ -90,4 +125,5 @@ public class Move : MonoBehaviour
     {
         return controller.isGrounded;
     }
+
 }
