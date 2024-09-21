@@ -29,6 +29,12 @@ public class BaseSpecialAbility : MonoBehaviour
     {
         if(Time.time - castTime < Duration)
         {
+            Debug.Log($"Speed: {Speed}");
+            Debug.Log($"Damage: {Damage}");
+            Debug.Log($"Duration: {Duration}");
+            Debug.Log($"Range: {Range}");
+            Debug.Log($"AbilityCooldown: {AbilityCooldown}");
+            Debug.Log($"EffectRadius: {EffectRadius}");
             transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }
         else

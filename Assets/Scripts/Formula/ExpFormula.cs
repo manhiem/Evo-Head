@@ -7,6 +7,6 @@ public class ExpFormula : AbilityFormula
 {
     public override float Evaluate(int level)
     {
-        return baseValue * (multiplier ^ (level - 1));
+        return baseValue * Mathf.Pow(multiplier, level - 1);
     }
 }
