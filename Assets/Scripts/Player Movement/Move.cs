@@ -86,6 +86,10 @@ public class Move : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
     }
 
+    public void InstantiateAbility(BaseSpecialAbility ability)
+    {
+        Instantiate(ability, atkTransform.position, ability.transform.rotation);
+    }
     float GetMoveSpeed()
     {
         return playerSpeed;

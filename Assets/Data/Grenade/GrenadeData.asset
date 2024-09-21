@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2083999e4564f741a1a6064785e7b06, type: 3}
+  m_Name: GrenadeData
+  m_EditorClassIdentifier: 
+  AbilityName: Grenade
+  Description: 
+  AbilityImage: {fileID: 21300000, guid: f734e63a769bba147944f6f375ab49c4, type: 3}
+  abilityPrefab: {fileID: 8042426534537646577, guid: 9ca407ad83d92ba46b8876f68b9e3813,
+    type: 3}
+  Damage: {fileID: 11400000, guid: 9970d8babaa4548459ae69ce20bcaf53, type: 2}
+  Range: {fileID: 11400000, guid: b9f7ca75bd3ba244e831f706c373fc51, type: 2}
+  Duration: {fileID: 11400000, guid: ad35bc12053fe6d46831bfab92b58690, type: 2}
+  AbilityCooldown: {fileID: 11400000, guid: ce54d0062c0ede4448ba1f7f6c9f8156, type: 2}
+  EffectRadius: {fileID: 11400000, guid: e5bdfa56190da294282c516f07cc3ab9, type: 2}
+  Speed: {fileID: 11400000, guid: cb6c1740ed6f4bd4bbec7c2056959a2c, type: 2}

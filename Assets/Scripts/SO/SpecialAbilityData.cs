@@ -7,6 +7,9 @@ public class SpecialAbilityData : ScriptableObject
 {
     public string AbilityName;
     public string Description;
+    public Sprite AbilityImage;
+
+    public BaseSpecialAbility abilityPrefab;
 
     public AbilityFormula Damage;
     public AbilityFormula Range;
