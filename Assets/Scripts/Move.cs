@@ -53,7 +53,7 @@ public class Move : MonoBehaviour
         // }
 
         Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
-        controller.Move(-moveDirection * Time.deltaTime);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 
     float GetMoveSpeed()
