@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2083999e4564f741a1a6064785e7b06, type: 3}
+  m_Name: ShieldData
+  m_EditorClassIdentifier: 
+  AbilityName: Shield
+  Description: 
+  AbilityImage: {fileID: 21300000, guid: 3c5fd694f11085444a2eecb52a72a5b5, type: 3}
+  abilityPrefab: {fileID: 8042426534537646577, guid: 26ded5dce6a478d4ba07b4d51c901687,
+    type: 3}
+  Damage: {fileID: 11400000, guid: eea47ba5fa96482468f19b31220d9af4, type: 2}
+  Range: {fileID: 11400000, guid: 407de42e96bf193408fac53c8a4fd66d, type: 2}
+  Duration: {fileID: 11400000, guid: 39b7894c01fcba041b1c8356ee8ffd5c, type: 2}
+  AbilityCooldown: {fileID: 11400000, guid: 645daec7cb4fbf243942d792eda4b333, type: 2}
+  EffectRadius: {fileID: 11400000, guid: cbf4f63cd57c30745aebc6e9f3da4507, type: 2}
+  Speed: {fileID: 11400000, guid: e98f73fa9714ba045b5fb95a7ccb625f, type: 2}

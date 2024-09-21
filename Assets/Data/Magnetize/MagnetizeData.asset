@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2083999e4564f741a1a6064785e7b06, type: 3}
+  m_Name: MagnetizeData
+  m_EditorClassIdentifier: 
+  AbilityName: Magnetize
+  Description: 
+  AbilityImage: {fileID: 21300000, guid: 4535097ce5e521f498a264fe00af3729, type: 3}
+  abilityPrefab: {fileID: 8042426534537646577, guid: 6450841b23048cc4ab4e86590d751841,
+    type: 3}
+  Damage: {fileID: 11400000, guid: c77a8ad7883e2b048b90f91cc0af2faf, type: 2}
+  Range: {fileID: 11400000, guid: bdfaca1595797ff4ea1496e34dae22d1, type: 2}
+  Duration: {fileID: 11400000, guid: fe934cc6a66562b4da85973ea4ef9e9e, type: 2}
+  AbilityCooldown: {fileID: 11400000, guid: 743645f0da07d1c45b2a69b5afdb338c, type: 2}
+  EffectRadius: {fileID: 11400000, guid: 957f5bbad9a29f543b3a60d317012b97, type: 2}
+  Speed: {fileID: 11400000, guid: 907de8d0aa809bc45a89920b71482e40, type: 2}

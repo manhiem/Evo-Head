@@ -63,11 +63,6 @@ public class Move : MonoBehaviour
         {
             EndJump();
         }
-
-        if (Input.GetKeyDown(AbilityTestKey))
-        {
-            Instantiate(SpecialAbility, atkTransform.position, SpecialAbility.transform.rotation);
-        }
     }
 
     void MovePlayer()
@@ -94,6 +89,11 @@ public class Move : MonoBehaviour
         }
         Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void InstantiateAbility(BaseSpecialAbility ability)
+    {
+        Instantiate(ability, atkTransform.position, ability.transform.rotation);
     }
 
     public void ApplyDamage(float dmg)
