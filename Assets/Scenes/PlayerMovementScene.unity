@@ -426,7 +426,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1351712448
+--- !u!1 &865286524
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -434,29 +434,128 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1351712449}
+  - component: {fileID: 865286525}
   m_Layer: 0
-  m_Name: AtkTransform
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1351712449
+--- !u!4 &865286525
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351712448}
+  m_GameObject: {fileID: 865286524}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.77}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1390791987}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1176453104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.61773
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.1108313
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      propertyPath: m_Name
+      value: Magician_RIO_Unity@Standing 2H Magic Attack 05
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1311890221}
+  m_SourcePrefab: {fileID: 100100000, guid: 6e2f89962c87b6d439e76de4390a8a3a, type: 3}
+--- !u!1 &1311890220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e2f89962c87b6d439e76de4390a8a3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1176453104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1311890221
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311890220}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 35c44a97c30e4e946a0f4d3310613b95, type: 3}
+  m_Controller: {fileID: 9100000, guid: 93a1a9d84da42a14e8075ee54abdd5dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1390791980
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,20 +596,18 @@ MonoBehaviour:
   crouchSpeed: 3
   gravity: -9.8
   standingHeight: 2
-  crouchHeight: 1
-  speedMulti: 2
-  jumpHeight: 2
+  speedMultiplierInAir: 1.5
+  minJumpHeight: 2.5
   maxJumpHeight: 6
-  maxJumpHoldDur: 1.5
+  maxJumpHoldDuration: 1.5
   camTransform: {fileID: 330585546}
-  atkTransform: {fileID: 1351712449}
+  atkTransform: {fileID: 0}
   maxHealth: 100
   timeBeforeHPRegenStarts: 3
   healthIncrementValue: 1
   healthTimeIncrement: 0.1
-  AbilityTestKey: 27
-  SpecialAbility: {fileID: 8042426534537646577, guid: e1f83b89fd737ac4481ac4e31a027e13,
-    type: 3}
+  AbilityTestKey: 0
+  SpecialAbility: {fileID: 0}
 --- !u!143 &1390791982
 CharacterController:
   m_ObjectHideFlags: 0
@@ -649,7 +746,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
-  - {fileID: 1351712449}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1390791988
@@ -781,3 +877,5 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1414687146}
   - {fileID: 1390791987}
+  - {fileID: 1176453104}
+  - {fileID: 865286525}
