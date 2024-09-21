@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     public float playerSpeed = 6f;
     public float sprintSpeed = 10f;
     public float crouchSpeed = 3f;
-    public float gravity = -9.8f;
+    public float gravity = -4.8f;
     public float standingHeight = 2f;
     public float crouchHeight = 1f;
     private bool isCrouching;
