@@ -11,8 +11,18 @@ public class Move : MonoBehaviour
     public float gravity = -9.8f;
     public float standingHeight = 2f;
     public float crouchHeight = 1f;
-    public float jumpHeight = 2f;
     private bool isCrouching;
+    public float speedMulti = 1.5f;
+    public float jumpHeight = 2.5f;
+    public float maxJumpHeight = 6f;
+    private float currentJumpHeight;
+    private float jumpHoldTime = 0f;
+    public float maxJumpHoldDur = 1.5f;
+    private bool isJumping;
+
+    public float maxHealth = 100;
+    float currentHealth;
+
     public Transform camTransform;
 
     void Start()
@@ -20,6 +30,9 @@ public class Move : MonoBehaviour
         controller = GetComponent<CharacterController>();
         // camTransform = Camera.main.transform;
         isCrouching = false;
+        isJumping = false;
+
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -29,7 +42,15 @@ public class Move : MonoBehaviour
 
         if (isGrounded() && Input.GetButtonDown("Jump"))
         {
-            Jump();
+            StartJump();
+        }
+        else if (isJumping && Input.GetButton("Jump"))
+        {
+            HoldJump();
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            EndJump();
         }
     }
 
@@ -51,7 +72,10 @@ public class Move : MonoBehaviour
         // {
         //    StandUp();
         // }
-
+        if (!isGrounded())
+        {
+            moveSpeed *= speedMulti;
+        }
         Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
         controller.Move(moveDirection * Time.deltaTime);
     }
@@ -81,13 +105,44 @@ public class Move : MonoBehaviour
         controller.Move(playerVel * Time.deltaTime);
     }
 
-    void Jump()
+    void StartJump()
     {
-        playerVel.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        isJumping = true;
+        jumpHoldTime = 0f;
+        currentJumpHeight = jumpHeight;
+    }
+    void HoldJump()
+    {
+        jumpHoldTime += Time.deltaTime;
+        float holdPer = Mathf.Clamp(jumpHoldTime / maxJumpHoldDur, 0f, 1f);
+        currentJumpHeight = Mathf.Lerp(jumpHeight, maxJumpHeight, holdPer);
+    }
+    void EndJump()
+    {
+        isJumping = false;
+        playerVel.y = Mathf.Sqrt(currentJumpHeight * -2 * gravity);
     }
 
     bool isGrounded()
     {
         return controller.isGrounded;
+    }
+
+    public void ApplyDamage(float dmg)
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth -= dmg;
+
+            if (currentHealth <= 0)
+            {
+                KillPlayer();
+            }
+        }
+    }
+
+    public void KillPlayer()
+    {
+        Destroy(gameObject);
     }
 }
