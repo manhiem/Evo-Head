@@ -15,7 +15,7 @@ MonoBehaviour:
   AbilityName: Dash
   Description: 
   AbilityImage: {fileID: 21300000, guid: c6dc3afde4e8a8b43afbe5a383ceedc4, type: 3}
-  abilityPrefab: {fileID: 8042426534537646577, guid: e1f83b89fd737ac4481ac4e31a027e13,
+  abilityPrefab: {fileID: 433489448939179182, guid: e1f83b89fd737ac4481ac4e31a027e13,
     type: 3}
   Damage: {fileID: 11400000, guid: 3ddf8cfaa43000e4da571483e31aff4a, type: 2}
   Range: {fileID: 11400000, guid: be48ab6fc8c781d42a4e0fe63474f840, type: 2}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3df675d673e424887a60d59f6beb6d, type: 3}
   m_Name: DashSpeed
   m_EditorClassIdentifier: 
-  baseValue: 5
+  baseValue: 50
   multiplier: 1.2
