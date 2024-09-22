@@ -10,14 +10,14 @@ public class Move : MonoBehaviour
     public float playerSpeed = 6f;
     public float sprintSpeed = 10f;
     public float crouchSpeed = 3f;
-    public float gravity = -9.8f;
+    public float gravity = 9.8f;
     public float standingHeight = 2f;
     public float speedMultiplierInAir = 1.5f;
 
     public float minJumpHeight = 2.5f;
     public float maxJumpHeight = 6f;
-    private float jumpHoldTime = 0f;
-    public float maxJumpHoldDuration = 1.5f;
+    private float jumpHoldDuration = 0.2f;
+    public float jumpTime = 1.5f;
     private bool isJumping = false;
     private bool jumpButtonHeld = false;
     public Transform camTransform;
@@ -43,27 +43,24 @@ public class Move : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        ApplyGravity();
 
-        if (isGrounded() && Input.GetButtonDown("Jump"))
+        if (isGrounded())
         {
-            StartJump();
+            if (Input.GetButtonDown("Jump"))
+            {
+                StartJump();
+            }
         }
-        else if (isJumping && Input.GetButton("Jump") && jumpButtonHeld)
+
+        if (Input.GetButton("Jump") && isJumping)
         {
             HoldJump();
         }
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            jumpButtonHeld = false;
-        }
+        ApplyGravity();
 
-        if (isGrounded())
-        {
-            playerVelocity.y = 0f;
-            isJumping = false;
-        }
+        // Move the character controller based on velocity
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 
     void MovePlayer()
@@ -124,22 +121,33 @@ public class Move : MonoBehaviour
     // }
     void StartJump()
     {
+        Debug.Log("Jump started");
         isJumping = true;
-        jumpButtonHeld = true;
-        jumpHoldTime = 0f;
-        playerVelocity.y = Mathf.Sqrt(minJumpHeight * -2f * gravity);
+        jumpTime = 0f;
+
+        // Jump velocity calculation
+        playerVelocity.y = Mathf.Sqrt(2f * minJumpHeight * gravity);  // Set initial jump velocity
+
+        Debug.Log("Initial Jump Velocity: " + playerVelocity.y);
     }
 
     void HoldJump()
     {
-        if (jumpHoldTime < maxJumpHoldDuration)
+        if (jumpTime < jumpHoldDuration)
         {
-            jumpHoldTime += Time.deltaTime;
-            float holdPercentage = Mathf.Clamp(jumpHoldTime / maxJumpHoldDuration, 0f, 1f);
-            float targetJumpHeight = Mathf.Lerp(minJumpHeight, maxJumpHeight, holdPercentage);
-            playerVelocity.y = Mathf.Sqrt(targetJumpHeight * -2f * gravity);
+            jumpTime += Time.deltaTime;
+
+            float heightMultiplier = Mathf.Clamp(jumpTime / jumpHoldDuration, 0f, 1f); // Clamps the time held between 0 and 1
+            float targetJumpHeight = Mathf.Lerp(minJumpHeight, maxJumpHeight, heightMultiplier); // Linearly interpolate between min and max height
+
+            playerVelocity.y = Mathf.Sqrt(2f * targetJumpHeight * gravity); // Update player velocity for higher jump
+        }
+        else
+        {
+            isJumping = false; // End the jump hold
         }
     }
+
     bool isGrounded()
     {
         return controller.isGrounded;
