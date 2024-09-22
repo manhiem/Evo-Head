@@ -473,7 +473,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.768
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e2f89962c87b6d439e76de4390a8a3a,
         type: 3}
@@ -556,7 +556,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'root'\n\tTransform 'c_thumb1.r'\n\tTransform
+    'c_middle1.r'\n\tTransform 'root'\n\tTransform 'arm_stretch.l'\n\tTransform 'spine_02.x'\n\tTransform
+    'spine_01.x'\n\tTransform 'thigh_stretch.r'\n\tTransform 'c_index2.r'\n\tTransform
+    'c_middle2.r'\n\tand more ...\n\tFrom animation clip 'Running'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -583,7 +588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1390791981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,15 +609,19 @@ MonoBehaviour:
   speedMultiplierInAir: 1.5
   minJumpHeight: 2.5
   maxJumpHeight: 6
-  maxJumpHoldDuration: 1.5
+  jumpTime: 1.5
   camTransform: {fileID: 330585546}
   atkTransform: {fileID: 0}
+  isWalking: 0
   maxHealth: 100
   timeBeforeHPRegenStarts: 3
   healthIncrementValue: 1
   healthTimeIncrement: 0.1
   AbilityTestKey: 0
   SpecialAbility: {fileID: 0}
+  dashSpeed: 0
+  dashDamage: 0
+  isDashing: 0
 --- !u!143 &1390791982
 CharacterController:
   m_ObjectHideFlags: 0
@@ -874,6 +883,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1744178923
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 105.01577
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.749081
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546899205568433675, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887854069371753649, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_Name
+      value: Magician_RIO_Unity@Standing 2H Magic Attack 05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887854069371753649, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236789287306749329, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236789287306749329, guid: 156896312b7e7a2418b7efea5cfc791b,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 156896312b7e7a2418b7efea5cfc791b, type: 3}
 --- !u!1 &2111554590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,3 +1164,4 @@ SceneRoots:
   - {fileID: 865286525}
   - {fileID: 6477082526490812098}
   - {fileID: 2111554593}
+  - {fileID: 1744178923}

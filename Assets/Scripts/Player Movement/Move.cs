@@ -13,8 +13,8 @@ public class Move : MonoBehaviour
     public float playerSpeed = 6f;
     public float sprintSpeed = 10f;
     public float crouchSpeed = 3f;
-    public float gravity = 9.8f;
-    public float standingHeight = 2f;
+    public float gravity = -9.8f;
+    public float standingHeight = 3f;
     public float speedMultiplierInAir = 1.5f;
 
     public float minJumpHeight = 2.5f;
@@ -44,10 +44,12 @@ public class Move : MonoBehaviour
     [HideInInspector] public bool isDashing;
 
 
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         isJumping = false;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -88,23 +90,36 @@ public class Move : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) 
+        Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
+        controller.Move(moveDirection * Time.deltaTime);
+
+        if (moveDirection.magnitude >= 0.1f)  // Ensure there is actual input
         {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isIdle", true);
+            controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                // Running state
+                moveSpeed = sprintSpeed;
+                animator.SetBool("isRunning", true);
+                animator.SetBool("isWalking", false);  // Ensure walking is false when running
+            }
+            else
+            {
+                // Walking state
+                animator.SetBool("isWalking", true);
+                animator.SetBool("isRunning", false);  // Ensure running is false when walking
+            }
+
+            animator.SetBool("isIdle", false);  // Not idle while moving
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            moveSpeed = sprintSpeed;
-            animator.SetBool("isRunning", true);
-        }
         else
         {
+            // No movement input, so the player is idle
             animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
         }
 
         if (!isGrounded())
@@ -116,9 +131,6 @@ public class Move : MonoBehaviour
         {
             InstantiateAbility(SpecialAbility);
         }
-
-        Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
-        controller.Move(moveDirection * Time.deltaTime);
     }
 
     public void InstantiateAbility(BaseSpecialAbility ability)
@@ -133,7 +145,16 @@ public class Move : MonoBehaviour
 
     void ApplyGravity()
     {
-        playerVelocity.y += gravity * Time.deltaTime;
+        if (isGrounded())
+        {
+            playerVelocity.y = 0f;  // Reset vertical velocity when grounded
+        }
+        else
+        {
+            playerVelocity.y += gravity * Time.deltaTime;  // Apply gravity over time
+        }
+
+        // Apply gravity to the CharacterController
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
@@ -201,6 +222,6 @@ public class Move : MonoBehaviour
 
     bool isGrounded()
     {
-        return controller.isGrounded;
+        return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.1f);
     }
 }
