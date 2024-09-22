@@ -7,6 +7,8 @@ public class Move : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
 
+    Animator animator;
+
     public float playerSpeed = 6f;
     public float sprintSpeed = 10f;
     public float crouchSpeed = 3f;
@@ -22,6 +24,7 @@ public class Move : MonoBehaviour
     private bool jumpButtonHeld = false;
     public Transform camTransform;
     public Transform atkTransform;
+    public bool isWalking = false;
 
     [Header("Health Params")]
     [SerializeField] private float maxHealth = 100;
@@ -69,9 +72,23 @@ public class Move : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) 
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = sprintSpeed;
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
         }
 
         if (!isGrounded())
