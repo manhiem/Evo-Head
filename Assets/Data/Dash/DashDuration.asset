@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff96832d085e591499e31d1c518f8422, type: 3}
   m_Name: DashDuration
   m_EditorClassIdentifier: 
-  baseValue: 5
+  baseValue: 0.3
   multiplier: 2

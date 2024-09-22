@@ -15,7 +15,7 @@ MonoBehaviour:
   AbilityName: Magnetize
   Description: 
   AbilityImage: {fileID: 21300000, guid: 4535097ce5e521f498a264fe00af3729, type: 3}
-  abilityPrefab: {fileID: 8042426534537646577, guid: 6450841b23048cc4ab4e86590d751841,
+  abilityPrefab: {fileID: 3212039787926891664, guid: 6450841b23048cc4ab4e86590d751841,
     type: 3}
   Damage: {fileID: 11400000, guid: c77a8ad7883e2b048b90f91cc0af2faf, type: 2}
   Range: {fileID: 11400000, guid: bdfaca1595797ff4ea1496e34dae22d1, type: 2}

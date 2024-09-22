@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Move : MonoBehaviour
 {
@@ -37,6 +38,12 @@ public class Move : MonoBehaviour
     [SerializeField] private KeyCode AbilityTestKey;
     [SerializeField] private BaseSpecialAbility SpecialAbility;
 
+
+    [HideInInspector] public float dashSpeed;
+    [HideInInspector] public float dashDamage;
+    [HideInInspector] public bool isDashing;
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -58,6 +65,15 @@ public class Move : MonoBehaviour
         if (Input.GetButton("Jump") && isJumping)
         {
             HoldJump();
+        }
+
+        if (isDashing)
+        {
+            Debug.Log($"Dashing!! {dashSpeed}");
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 moveDirection = transform.TransformDirection(Vector3.forward) * dashSpeed;
+            controller.Move(moveDirection * Time.deltaTime);
         }
 
         ApplyGravity();
@@ -96,13 +112,19 @@ public class Move : MonoBehaviour
             moveSpeed *= speedMultiplierInAir;
         }
 
+        if(Input.GetKeyDown(AbilityTestKey))
+        {
+            InstantiateAbility(SpecialAbility);
+        }
+
         Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0, verticalInput)) * moveSpeed;
         controller.Move(moveDirection * Time.deltaTime);
     }
 
     public void InstantiateAbility(BaseSpecialAbility ability)
     {
-        Instantiate(ability, atkTransform.position, ability.transform.rotation);
+        BaseSpecialAbility abilityInstance = Instantiate(ability, atkTransform.position, ability.transform.rotation, gameObject.transform);
+        abilityInstance.spawner = this;
     }
     float GetMoveSpeed()
     {
@@ -162,6 +184,18 @@ public class Move : MonoBehaviour
         else
         {
             isJumping = false; // End the jump hold
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            if(isDashing)
+            {
+                // TODO: Deduct Enemy Health
+                Debug.Log($"Enemy Hit! {dashDamage}");
+            }
         }
     }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   AbilityName: Grenade
   Description: 
   AbilityImage: {fileID: 21300000, guid: f734e63a769bba147944f6f375ab49c4, type: 3}
-  abilityPrefab: {fileID: 8042426534537646577, guid: 9ca407ad83d92ba46b8876f68b9e3813,
+  abilityPrefab: {fileID: 3758561288272322369, guid: 9ca407ad83d92ba46b8876f68b9e3813,
     type: 3}
   Damage: {fileID: 11400000, guid: 9970d8babaa4548459ae69ce20bcaf53, type: 2}
   Range: {fileID: 11400000, guid: b9f7ca75bd3ba244e831f706c373fc51, type: 2}
